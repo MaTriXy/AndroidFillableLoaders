@@ -4,6 +4,7 @@ Android FillableLoaders
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-AndroidFillableLoaders-green.svg?style=flat)](https://android-arsenal.com/details/1/2302)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.jorgecastilloprz/fillableloaders/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.jorgecastilloprz/fillableloaders)
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0) [![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
+[![coverity](https://scan.coverity.com/projects/8852/badge.svg)](https://scan.coverity.com/projects/jorgecastilloprz-androidfillableloaders)
 
 Android Open Source library providing an interesting fillable progress view working with SVG paths.
 This is a nice option too if you want to create an interesting branding logo for your app.
@@ -62,6 +63,7 @@ And to include it into your layout:
   app:fl_strokeDrawingDuration="@integer/stroke_drawing_duration"
   app:fl_fillDuration="@integer/fill_duration"
   app:fl_clippingTransform="waves"
+  app:fl_fillPercentage="@integer/fill_percentage"
   />
 
   <!--
@@ -135,13 +137,19 @@ Custom behavior
 If your loader / brand logo needs to you can suppress the stroke drawing animation and go directly for the
 filling one. To do that, just set `app:strokeDrawingDuration="0"`.
 
+If you only need to fill the pattern partially or you want to control the fill progress, you can use
+`fl_fillPercentage` xml (resource) property or if you want to control from Java use.
+```java
+fillableLoader.setPercentage(percent);
+```
+
 Add it to your project
 ----------------------
 
 If you are working with gradle, add the dependency to your build.gradle file:
 ```groovy
 dependencies{
-    compile 'com.github.jorgecastilloprz:fillableloaders:1.02@aar'
+    compile 'com.github.jorgecastilloprz:fillableloaders:1.03@aar'
 }
 ```
 if you are working with maven, do it into your pom.xml
@@ -149,7 +157,7 @@ if you are working with maven, do it into your pom.xml
 <dependency>
     <groupId>com.github.jorgecastilloprz</groupId>
     <artifactId>fillableloaders</artifactId>
-    <version>1.02</version>
+    <version>1.03</version>
     <type>aar</type>
 </dependency>
 ```
@@ -188,7 +196,9 @@ License
     See the License for the specific language governing permissions and
     limitations under the License.
 
+
 [1]: ./art/demoPlain.gif
 [2]: ./art/demoRounded.gif
 [3]: ./art/demoSpikes.gif
 [4]: ./art/demoWaves.gif
+
